@@ -8,13 +8,16 @@
     <div class="content">
       <md-card>
         <p style="font-size: 20px">Perfect! 👌</p>
-        <p>The selected carrier recieved a notification</p>
-        <p>
-          Stay in touch, they will contact you as soon as arrive to the pickup location
-        </p>
-        <md-button to="/" class="md-primary">Back to home</md-button>
-        <md-button class="md-primary">Tracking</md-button>
+        <p style="color: green">Your job has been successfully posted!</p>
+        <p>Stay in touch, Job seekers near to your location will be contacting soon.</p>
+        <p>Do you need other service?</p>
+        <md-button to="/" class="md-primary">Yes</md-button>
+        <md-button class="md-primary">No</md-button>
+        <p>Look at bellow, our most popular categories</p>
       </md-card>
+      <div class="category">
+        <Category />
+      </div>
     </div>
     <Footer />
   </div>
@@ -23,6 +26,7 @@
 <script>
 import Header from "../../shared/Header";
 import Footer from "../../shared/Footer";
+import Category from "./Category";
 export default {
   name: "Complation",
   data: () => ({}),
@@ -32,6 +36,7 @@ export default {
   components: {
     Header,
     Footer,
+    Category,
   },
 };
 </script>
@@ -51,6 +56,9 @@ export default {
   .md-card {
     padding: 20px;
     text-align: center;
+  }
+  .category {
+    padding: 10px 6px;
   }
 }
 </style>

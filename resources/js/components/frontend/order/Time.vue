@@ -1,5 +1,5 @@
 <template>
-  <div class="Time">
+  <div class="time">
     <span class="md-display-1">When do you need the work to satart?</span>
     <div class="break"></div>
     <form @submit.prevent="nextStep()">
@@ -81,14 +81,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.options {
-  .md-radio {
-    margin: 8px 16px 8px 0;
+.time {
+  text-align: center;
+  form {
+    width: 300px;
+    margin: auto;
+    text-align: left;
+    .options {
+      .md-radio {
+        margin: 8px 16px 8px 0;
+      }
+    }
+    .action {
+      display: flex;
+      justify-content: center;
+    }
   }
-}
-.action {
-  display: flex;
-  justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {

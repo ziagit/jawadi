@@ -8,18 +8,15 @@
     >
       <Header v-on:togal-menu="$emit('togal-menu')" :scrollValue="scrollValue" />
       <div class="content">
-        <div class="md-display-1">Our Carriers</div>
-
-        <div class="md-subheading">
-          Join our carrier networks by creating an account with us.
-        </div>
+        <div class="md-display-1">Our Services</div>
+        <div class="md-subheading">Join our networks by creating an account with us.</div>
         <div class="break"></div>
         <div class="break"></div>
         <md-button class="custom-button" to="/register">Sign Up</md-button>
       </div>
     </div>
 
-    <div class="section1">
+    <md-card class="section1">
       <div class="wrapper">
         <div class="left">
           <div>
@@ -65,20 +62,20 @@
           </div>
         </div>
       </div>
-    </div>
+    </md-card>
     <div class="section2">
       <div class="rows">
         <div class="row">
           <img :src="'/images/uploads/carrier-tech.svg'" width="30" alt="" />
           <div>
-            <div class="md-title">Carrier Technology</div>
+            <div class="md-title">Technology</div>
             <div class="md-body-1">Easy to use tools to find freight.</div>
           </div>
         </div>
         <div class="row">
           <img :src="'/images/uploads/carrier-payment.svg'" width="30" alt="" />
           <div>
-            <div class="md-title">Get Paid</div>
+            <div class="md-title">Payment</div>
             <div class="md-body-1">
               Get paid fast with options to further speed the process.
             </div>
@@ -87,10 +84,8 @@
         <div class="row">
           <img :src="'/images/uploads/carrier-freight.svg'" width="50" alt="" />
           <div>
-            <div class="md-title">Carrier Programs</div>
-            <div class="md-body-1">
-              Personalized service and more freight opportunities.
-            </div>
+            <div class="md-title">Programs</div>
+            <div class="md-body-1">Personalized service and more opportunities.</div>
           </div>
         </div>
       </div>
@@ -101,7 +96,6 @@
 </template>
 
 <script>
-import axio from "axios";
 import Footer from "../../shared/Footer";
 import Header from "../../shared/Header";
 export default {
@@ -154,7 +148,8 @@ export default {
     max-width: 1200px;
     margin: auto;
     padding: 30px;
-
+    margin-top: -30px;
+    margin-bottom: 30px;
     .wrapper {
       display: flex;
       justify-content: space-around;

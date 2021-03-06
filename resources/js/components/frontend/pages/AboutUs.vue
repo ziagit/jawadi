@@ -13,11 +13,11 @@
       </div>
     </div>
 
-    <div class="section1">
+    <md-card class="section1">
       <div class="wrapper">
         <div class="left">
           <div>
-            <div class="md-display-1">Shipping TAP Mission</div>
+            <div class="md-display-1">aTradies Mission</div>
             <div class="md-body-1">
               Shipping TAB was founded to create a better way for people and businesses to
               ship freight as well as moving their household. There were countless
@@ -235,7 +235,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </md-card>
 
     <Footer />
   </div>
@@ -266,7 +266,6 @@ export default {
 <style lang="scss" scoped>
 .container {
   background: #fff;
-
   .section0 {
     background-repeat: no-repeat;
     background-size: cover;
@@ -294,6 +293,8 @@ export default {
     max-width: 1200px;
     margin: auto;
     padding: 30px;
+    margin-top: -30px;
+    margin-bottom: 30px;
 
     .wrapper {
       display: flex;

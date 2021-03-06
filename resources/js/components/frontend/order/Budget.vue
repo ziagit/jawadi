@@ -1,7 +1,6 @@
 <template>
-  <div class="origin">
+  <div class="budget">
     <span class="md-display-1">How mouch is the budget?</span>
-    <div class="break"></div>
     <form @submit.prevent="nextStep()">
       <div class="break"></div>
       <div class="break"></div>
@@ -82,18 +81,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.row {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  .col {
-    flex: 50%;
+.budget {
+  text-align: center;
+  form {
+    text-align: left;
+    width: 300px;
+    margin: auto;
+    .options {
+      .md-radio {
+        margin: 8px 16px 8px 0;
+      }
+    }
+    .action {
+      display: flex;
+      justify-content: center;
+    }
   }
-}
-
-.action {
-  display: flex;
-  justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {

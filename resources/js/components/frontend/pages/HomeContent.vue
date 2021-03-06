@@ -10,9 +10,7 @@
       <div class="break"></div>
       <div class="break"></div>
       <div class="actions">
-        <md-button class="md-primary md-raised custom-button" to="/order/location"
-          >Book now</md-button
-        >
+        <Category />
       </div>
     </div>
 
@@ -23,7 +21,7 @@
 <script>
 import Footer from "../../shared/Footer";
 import Header from "../../shared/Header";
-
+import Category from "../order/Category";
 export default {
   name: "HomeContent",
   props: ["scrollValue"],
@@ -41,6 +39,7 @@ export default {
   components: {
     Header,
     Footer,
+    Category,
   },
 };
 </script>
@@ -53,7 +52,11 @@ export default {
     text-align: center;
     max-width: 600px;
     margin: auto;
-    padding-top: 163px;
+    padding-top: 9%;
+    .md-display-1 {
+      font-weight: 500;
+      font-size: 36px;
+    }
     .md-subheading {
       color: #448aff;
     }

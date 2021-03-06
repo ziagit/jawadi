@@ -28,7 +28,7 @@ class OptionsController extends Controller
         return response()->json($status);
     }
     public function categories(){
-        $status = Option::get('categories');
+        $status = Option::all('categories','icon');
         return response()->json($status);
     }
   

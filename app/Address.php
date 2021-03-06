@@ -18,6 +18,6 @@ class Address extends Model
         return $this->belongsToMany(Rate::class);
     }
     public function orders(){
-        return $this->belongsToMany(Order::class);
+        return $this->hasOne(Order::class);
     }
 }

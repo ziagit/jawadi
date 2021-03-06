@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddressOrderTable extends Migration
+class CreateOptionOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAddressOrderTable extends Migration
      */
     public function up()
     {
-        Schema::create('address_order', function (Blueprint $table) {
+        Schema::create('option_order', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('option_id');
             $table->unsignedInteger('order_id');
-            $table->unsignedInteger('address_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateAddressOrderTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address_order');
+        Schema::dropIfExists('option_order');
     }
 }

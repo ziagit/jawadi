@@ -27,7 +27,9 @@ export default {
 }
 
 .section0 {
-  box-shadow: 0 2px 13px -7px grey;
+  box-shadow: 0;
+  border: none;
+  // box-shadow: 0 2px 13px -7px grey;
 }
 .md-stepper-label {
   color: #000 !important;
@@ -112,6 +114,7 @@ export default {
   border-radius: 100px !important;
   padding: 0 30px !important;
   text-transform: none !important; /*For Lower case use lowercase*/
+  background: #0000ff1f;
 }
 
 @media only screen and (min-width: 600px) {

@@ -14,13 +14,13 @@
             >Signup now</md-button
           >
           <md-button class="custom-button" to="/order" v-if="shipperToggal"
-            >Start new quote</md-button
+            >Post a new job</md-button
           >
         </div>
       </div>
     </div>
 
-    <div class="section1">
+    <md-card class="section1">
       <md-tabs>
         <md-tab
           id="tab-how-works"
@@ -29,47 +29,46 @@
           @click="
             passData(
               (header = 'How it Works?'),
-              (subheader = 'Beginnerٌs guide to shipping from home on Shipbay')
+              (subheader = 'Most common quetions about our customers')
             )
           "
         >
           <HowItWorks />
         </md-tab>
         <md-tab
-          id="tab-carrier"
-          md-label="Carrier"
+          id="tab-service"
+          md-label="Services"
           md-icon="directions_boat"
           @click="
             passData(
-              (header = 'Carrier'),
-              (subheader = 'Most common questoins about our carriers')
+              (header = 'Services'),
+              (subheader = 'Most common questoins about our services')
             )
           "
         >
           <CarrierHelp />
         </md-tab>
         <md-tab
-          id="tab-shipper"
-          md-label="Shipper"
+          id="tab-customer"
+          md-label="Customers"
           md-icon="local_mall"
           @click="
             passData(
-              (header = 'Shipper'),
-              (subheader = 'Top common questions about our shippers')
+              (header = 'Customers'),
+              (subheader = 'Top common questions about our customers')
             )
           "
         >
           <ShipperHelp />
         </md-tab>
       </md-tabs>
-    </div>
+    </md-card>
 
     <Footer />
   </div>
 </template>
 
 <script>
-import axio from "axios";
 import Footer from "../../shared/Footer";
 import Header from "../../shared/Header";
 import CarrierHelp from "./CarrierHelp";
@@ -85,7 +84,7 @@ export default {
       message: null,
     },
     header: "How it Works?",
-    subheader: "Beginnerٌs guide to shipping from home on Shipbay",
+    subheader: "Get done your work without leaving confort of home",
     carrierToggal: false,
     shipperToggal: false,
   }),
@@ -93,8 +92,8 @@ export default {
     passData(header, subheader) {
       this.header = header;
       this.subheader = subheader;
-      this.carrierToggal = header == "Carrier" ? true : false;
-      this.shipperToggal = header == "Shipper" ? true : false;
+      this.carrierToggal = header == "Services" ? true : false;
+      this.shipperToggal = header == "Customers" ? true : false;
     },
   },
   components: {
@@ -142,7 +141,8 @@ export default {
     max-width: 1200px;
     margin: auto;
     padding: 30px;
-
+    margin-top: -30px;
+    margin-bottom: 30px;
     .md-tabs {
       width: 100% !important;
       margin: auto;

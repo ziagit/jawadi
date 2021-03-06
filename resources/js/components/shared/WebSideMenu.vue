@@ -19,7 +19,7 @@
         <span
           class="md-list-item-text"
           v-bind:class="{ active: $route.name == 'our-shippers' }"
-          >Shippers</span
+          >Customer</span
         >
       </md-list-item>
 
@@ -38,7 +38,7 @@
         <span
           class="md-list-item-text"
           v-bind:class="{ active: $route.name == 'our-carriers' }"
-          >Carriers</span
+          >Services</span
         >
       </md-list-item>
       <md-list-item to="/help" @click="hideMenu()">

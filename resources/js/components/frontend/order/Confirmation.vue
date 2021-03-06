@@ -83,7 +83,6 @@
 <script>
 import axios from "axios";
 import functions from "../services/functions";
-import Card from "../services/card";
 import Spinner from "../../shared/Spinner";
 import Snackbar from "../../shared/Snackbar";
 import TermsAndConditions from "../../shared/TermsAndConditions";
@@ -107,6 +106,7 @@ export default {
   methods: {
     confirm() {
       this.dataLoading = true;
+      this.$router.push("completion");
       axios
         .post("confirm", JSON.parse(localStorage.getItem("order")))
         .then((res) => {
@@ -122,27 +122,7 @@ export default {
           console.log(err);
         });
     },
-    checkPayment() {
-      Card.checkPayment()
-        .then((res) => {
-          if (res.status) {
-            this.paymentStatus = true;
-          } else {
-            this.dataLoading = false;
-            this.snackbar.show = true;
-            this.snackbar.message = "Add your card informations to process your order";
-            this.snackbar.statusCode = 0;
-            this.$router.push("/job/payment-details");
-          }
-        })
-        .catch((error) => {
-          this.dataLoading = false;
-          this.snackbar.show = true;
-          this.snackbar.message = "Somthing is wrong! refresh your page.";
-          this.snackbar.statusCode = 0;
-          console.log("error: ", error.response);
-        });
-    },
+
     init() {
       this.$emit("progress", 10);
       functions.makeJob().then((res) => {
@@ -170,8 +150,6 @@ export default {
   .content {
     max-width: 600px;
     margin: auto;
-    padding: 30px;
-
     .md-card {
       text-align: left;
       margin: auto;
@@ -182,7 +160,6 @@ export default {
           text-align: right;
         }
       }
-
       .item {
         margin: 0 0 10px 10px;
 

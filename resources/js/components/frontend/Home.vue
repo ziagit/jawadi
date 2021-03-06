@@ -3,7 +3,7 @@
     <md-app md-mode="reveal">
       <md-app-drawer :md-active.sync="menuVisible">
         <md-toolbar class="md-transparent" md-elevation="0"
-          ><span class="logo">Jawadi</span></md-toolbar
+          ><span class="logo">aTradies</span></md-toolbar
         >
         <AdminSideMenu
           v-on:hideSideMenu="menuVisible = !menuVisible"
@@ -79,7 +79,6 @@ export default {
 
     .md-toolbar {
       span {
-        font-family: "Segoe Script", Helvetica, Arial;
         margin-right: 5px;
         font-size: 18px;
       }

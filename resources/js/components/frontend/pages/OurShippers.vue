@@ -8,15 +8,15 @@
     >
       <Header v-on:togal-menu="$emit('togal-menu')" :scrollValue="scrollValue" />
       <div class="content">
-        <div class="md-display-1">Our Shippers</div>
+        <div class="md-display-1">Our Customers</div>
         <div class="md-subheading">We are committed to our customer satisfaction.</div>
         <div class="break"></div>
         <div class="break"></div>
-        <md-button class="custom-button">Start a Quote</md-button>
+        <md-button class="custom-button">Start a Job</md-button>
       </div>
     </div>
 
-    <div class="section1">
+    <md-card class="section1">
       <div class="wrapper">
         <div class="left">
           <div>
@@ -49,14 +49,14 @@
           </div>
           <br />
           <div>
-            <div class="md-display-1">How Does ShippingTAP Works?</div>
+            <div class="md-display-1">How Does aTradies Works?</div>
             <div class="md-body-1">
               ShippingTAP is like the Expedia of shipping freight. Just type in your
               origin and destination, dates and quantity you’re shipping. Instantly see
               all available trucks and rates. You book the deal you want! <br />
               <ul>
                 <li>
-                  <router-link to="/order">Get a Free Instant Quote</router-link>
+                  <router-link to="/order">Post a Free Instant Job</router-link>
                 </li>
                 <li>
                   <router-link to="/terms-and-conditions"
@@ -72,13 +72,13 @@
                 <li><router-link to="/register">Signup now</router-link></li>
               </ul>
             </div>
-            <router-link to="faq">See Shipper FAQ</router-link>
+            <router-link to="faq">See Customer FAQ</router-link>
           </div>
           <br />
           <div>
-            <div class="md-title">Start a New Quote</div>
+            <div class="md-title">Start a New Job</div>
             <div class="break"></div>
-            <md-button class="custom-button">Get Quote</md-button>
+            <md-button class="custom-button">Post your job</md-button>
           </div>
         </div>
         <div class="right">
@@ -117,14 +117,13 @@
           </div>
         </div>
       </div>
-    </div>
+    </md-card>
 
     <Footer />
   </div>
 </template>
 
 <script>
-import axio from "axios";
 import Footer from "../../shared/Footer";
 import Header from "../../shared/Header";
 export default {
@@ -177,7 +176,8 @@ export default {
     max-width: 1200px;
     margin: auto;
     padding: 30px;
-
+    margin-top: -30px;
+    margin-bottom: 30px;
     .wrapper {
       display: flex;
       justify-content: space-around;

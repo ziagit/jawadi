@@ -8,7 +8,7 @@
       >
         <md-icon>menu</md-icon>
       </md-button>
-      <h3 @click="$router.push('/')"><span>Jawadi</span></h3>
+      <h3 @click="$router.push('/')"><span>a</span>Tradies</h3>
     </div>
   </div>
 </template>
@@ -65,14 +65,11 @@ export default {
     }
 
     h3 {
-      color: #000;
+      color: rgb(20, 16, 49);
       margin-left: 96px;
-
-      span {
-        font-family: "Segoe Script", Helvetica, Arial;
-        font-size: 20px;
-        cursor: pointer;
-      }
+    }
+    h3:hover {
+      cursor: pointer;
     }
   }
 

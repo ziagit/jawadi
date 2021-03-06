@@ -1,6 +1,6 @@
 <template>
-  <div class="origin">
-    <span class="md-display-1">What needs work?</span>
+  <div class="need">
+    <span class="md-display-1">What needs the work?</span>
     <div class="break"></div>
     <form @submit.prevent="nextStep()">
       <div class="break"></div>
@@ -81,14 +81,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.options {
-  .md-radio {
-    margin: 8px 16px 8px 0;
+.need {
+  text-align: center;
+  form {
+    text-align: left;
+    width: 300px;
+    margin: auto;
+    .options {
+      .md-radio {
+        margin: 8px 16px 8px 0;
+      }
+    }
+    .action {
+      display: flex;
+      justify-content: center;
+    }
   }
-}
-.action {
-  display: flex;
-  justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {

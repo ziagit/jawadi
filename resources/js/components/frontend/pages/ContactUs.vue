@@ -39,11 +39,11 @@
         <div class="right">
           <div class="content">
             <img :src="'/images/uploads/location.svg'" alt="2" width="80" />
-            <div class="md-caption">Sheer Pur Main Road,</div>
-            <div class="md-caption">1001, Kabul</div>
-            <div class="md-caption">Afghanistan</div>
+            <div class="md-caption">xxxx</div>
+            <div class="md-caption">xxx, xxx</div>
+            <div class="md-caption">Aust</div>
             <div class="break"></div>
-            <div class="md-caption">+1 (604) 358-6261</div>
+            <div class="md-caption">+43 xxxxxxxxxx</div>
           </div>
         </div>
       </div>

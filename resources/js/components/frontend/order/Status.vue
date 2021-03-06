@@ -1,5 +1,5 @@
 <template>
-  <div class="origin">
+  <div class="status">
     <span class="md-display-1">What is the status of your job?</span>
     <div class="break"></div>
     <form @submit.prevent="nextStep()">
@@ -81,14 +81,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.options {
-  .md-radio {
-    margin: 8px 16px 8px 0;
+.status {
+  text-align: center;
+  form {
+    text-align: left;
+    width: 300px;
+    margin: auto;
+    .options {
+      .md-radio {
+        margin: 8px 16px 8px 0;
+      }
+    }
+    .action {
+      display: flex;
+      justify-content: center;
+    }
   }
-}
-.action {
-  display: flex;
-  justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {

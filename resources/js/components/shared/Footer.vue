@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="rows">
       <div class="row social-media">
-        <div class="md-headline"><span class="logo">Jawadi</span></div>
+        <div class="md-headline"><span class="logo">aTradies</span></div>
         <div class="md-body-1">Stay in touch & get update from social media</div>
         <div class="icons">
           <a href="https://facebook.com"
@@ -23,10 +23,10 @@
             <router-link to="/about">About</router-link>
           </li>
           <li>
-            <router-link to="/shippers">Shipper</router-link>
+            <router-link to="/shippers">Customers</router-link>
           </li>
           <li>
-            <router-link to="/carriers">Carrier</router-link>
+            <router-link to="/carriers">Services</router-link>
           </li>
         </ul>
       </div>
@@ -59,7 +59,7 @@
     </div>
     <div class="line"></div>
     <div class="bottom">
-      <span class="col0">© 2020 EG Logistics Inc. All rights reserved.</span>
+      <span class="col0">© 2021 aTradies. All rights reserved.</span>
       <span class="col1"
         ><router-link to="/terms-and-conditions">Terms</router-link> |
         <router-link to="/privacy-policies">Privacy</router-link></span
@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  background: #edf3ff;
+  background: #6f7fa0;
   min-height: 150px;
 
   .rows {

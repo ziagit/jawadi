@@ -1,59 +1,42 @@
 <template>
   <div class="container">
-    <div class="md-display-1">Your job is submitted!</div>
-    <div>Do you need anything else done?</div>
-    <div class="break"></div>
-
     <div class="row">
       <div class="col" v-for="category in categories" :key="category.id">
         <md-card
+          @click="start(category.categories)"
           v-if="category.categories != ''"
-          v-model="selected"
           :value="category.categories"
         >
           <md-card-content>
+            <md-icon>{{ category.icon }}</md-icon>
             {{ category.categories }}
           </md-card-content>
         </md-card>
       </div>
     </div>
-    <Snackbar :data="snackbar" />
   </div>
 </template>
 
 <script>
-import Snackbar from "../../shared/Snackbar";
 import localData from "../services/localData";
 export default {
   name: "Origin",
   data: () => ({
-    selected: "bs",
-    supportedArea: null,
-    initialData: null,
     categories: null,
-
-    snackbar: {
-      show: false,
-      message: null,
-      statusCode: null,
-    },
   }),
 
   methods: {
-    async nextStep() {
-      await localData.save("categories", this.selected);
-      this.$router.push("/order/posted");
+    start(category) {
+      localData.save("category", category);
+      this.$router.push("/order/location");
     },
 
-    async init() {
-      this.selected = await localData.read("job-categories");
-    },
     getcategories() {
       axios
         .get("categories")
         .then((res) => {
+          console.log("xxxxxxxxxx", res.data);
           this.categories = res.data;
-          console.log("xxxxxxxxx", this.categories);
         })
         .catch((err) => {
           console.log("Error: ", err);
@@ -61,14 +44,10 @@ export default {
     },
   },
   created() {
-    this.$emit("progress", 9);
-    this.init();
     this.getcategories();
-    localData.save("cRoute", this.$router.currentRoute.path);
+    localData.save("cr", this.$router.currentRoute.path);
   },
-  components: {
-    Snackbar,
-  },
+  components: {},
 };
 </script>
 
@@ -82,7 +61,27 @@ export default {
     .col {
       flex: 50%;
       .md-card {
+        background: linear-gradient(45deg, transparent, #71c4ff29);
         margin: 10px;
+        .md-card-content:last-of-type {
+          padding-bottom: none;
+        }
+
+        .md-card-content {
+          padding: 16px;
+          font-size: 18px;
+          line-height: 37px;
+        }
+        .md-icon {
+          position: absolute;
+          left: 17px;
+          top: 50%;
+          bottom: 50%;
+        }
+      }
+      .md-card:hover {
+        cursor: pointer;
+        opacity: 0.8;
       }
     }
   }

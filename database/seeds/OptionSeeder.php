@@ -21,6 +21,7 @@ class OptionSeeder extends Seeder
                 'budgets' => 'Under $500',
                 'status' => 'Ready to hire',
                 'categories' => 'Plumbers',
+                'icon' => 'home',
             ],
             [
                 'times' => 'ASAP',
@@ -29,6 +30,7 @@ class OptionSeeder extends Seeder
                 'budgets' => '$500 - $2,000',
                 'status' => 'Planning $ budgeting',
                 'categories' => 'Cleaners',
+                'icon' => 'home',
             ],
             [
                 'times' => 'Next few days',
@@ -37,6 +39,7 @@ class OptionSeeder extends Seeder
                 'budgets' => '$2,000 - $5,000',
                 'status' => '',
                 'categories' => 'Builders',
+                'icon' => 'home',
             ],
             [
                 'times' => 'I am flexible',
@@ -45,6 +48,7 @@ class OptionSeeder extends Seeder
                 'budgets' => 'More than $5,000',
                 'status' => '',
                 'categories' => 'Painters',
+                'icon' => 'home',
             ],
             [
                 'times' => 'Next few weeks',
@@ -53,6 +57,7 @@ class OptionSeeder extends Seeder
                 'budgets' => 'Not sure',
                 'status' => '',
                 'categories' => 'Handyman',
+                'icon' => 'home',
             ],
             [
                 'times' => '',
@@ -61,6 +66,7 @@ class OptionSeeder extends Seeder
                 'budgets' => '',
                 'status' => '',
                 'categories' => 'Lighting',
+                'icon' => 'home',
             ],
             [
                 'times' => '',
@@ -69,6 +75,7 @@ class OptionSeeder extends Seeder
                 'budgets' => '',
                 'status' => '',
                 'categories' => 'Guardners',
+                'icon' => 'home',
             ],
             [
                 'times' => '',
@@ -77,6 +84,7 @@ class OptionSeeder extends Seeder
                 'budgets' => '',
                 'status' => '',
                 'categories' => 'Electricians',
+                'icon' => 'home',
             ]
      
         ];

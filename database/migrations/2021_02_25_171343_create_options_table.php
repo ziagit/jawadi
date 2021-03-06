@@ -21,6 +21,7 @@ class CreateOptionsTable extends Migration
             $table->string('budgets');
             $table->string('status');
             $table->string('categories');
+            $table->string('icon');
             $table->timestamps();
         });
     }

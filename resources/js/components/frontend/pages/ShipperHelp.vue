@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="left">
-      <div class="md-display-1">Shipper</div>
+      <div class="md-display-1">Customers</div>
       <div class="md-body-1 text-16">
         Ask us anything! When you need assistance, our knowledgeable experts are ready. We
         want your freight shipping to be easy. Here are some common situations along with

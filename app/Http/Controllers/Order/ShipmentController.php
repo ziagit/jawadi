@@ -18,8 +18,6 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use function React\Promise\Stream\first;
-
 class ShipmentController extends Controller
 {
     /**
@@ -72,129 +70,51 @@ class ShipmentController extends Controller
     }
     public function storeOrder($request, $shipperId)
     {
-        $contactIds = $this->storeContact($request);
-        $addressIds = $this->storeAddress($request);
+        $contactId = $this->storeContact($request);
+        $addressId = $this->storeAddress($request);
     
-        $order = Order::where('uniqid', $request->id)->first();
-        $order->pickup_date = $request->pickDate;
-        $order->src_appointment_time = $request->src['appointmentTime'];
-        $order->des_appointment_time = $request->des['appointmentTime'];
-        $order->min_temperature = $request->myItem['minTemp'];
-        $order->max_temperature = $request->myItem['maxTemp'];
-        $order->cost = $request->carrier['price'];
-        $order->estimated_value = $request->shipper['estimatedValue'];
-        $order->instructions = $request->shipper['instructions'];
+        $order =new Order();
+        $order->budget = $request->budget;
+        $order->need = $request->need;
+        $order->service = $request->service;
+        $order->status = $request->status;
+        $order->time = $request->time;
+        $order->instructions = $request->instructions;
+        $order->contact_id = $contactId;
+        $order->address_id = $addressId;
+        
 
         $order->shipper_id = $shipperId;
 
-        $order->update();
-        $itemId = $this->storeItem($request);
-        $order->items()->attach($itemId);
-
-        $order->contacts()->attach($contactIds);
-        $order->addresses()->attach($addressIds);
+        $order->save();
         
-        foreach ($request->src['accessories'] as $accessory) {
-            if (!empty($accessory)) {
-                $src_accessory = Accessory::where('code', $accessory)->get();
-                $order->accessories()->attach($src_accessory[0]->id, ['type' => 'src']);
-            }
-        }
-        foreach ($request->des['accessories'] as $accessory) {
-            if (!empty($accessory)) {
-                $des_accessory = Accessory::where('code', $accessory)->get();
-                $order->accessories()->attach($des_accessory[0]->id, ['type' => 'des']);
-            }
-        }
-        foreach ($request->myItem['conditions'] as $accessory) {
-            if (!empty($accessory)) {
-                $gen_accessory = Accessory::where('code', $accessory)->get();
-                $order->accessories()->attach($gen_accessory[0]->id, ['type' => 'gen']);
-            }
-        }
+        
         return $order->id;
-    }
-    public function storeItem($request){
-        $items = $request->myItem['items'];
-        $data = array();
-        $itemId = array();
-        foreach ($items as $item) {
-            if (!empty($item)) {
-                $data = [
-                    'description' => $item['description'],
-                    'dimentional_weight' => $this->calculateDW($item),
-                    'itemtype_id' => $item['type'],
-                    'deliveryclass_id' => 1
-                ];
-            }
-            $id = Item::insertGetId($data);
-            array_push($itemId, $id);
-        }
-        return $itemId;
     }
 
     public function storeContact($request){
-        $contactIds = array();
-        $srcContact = [
-            'name' => $request->shipper['pickupName'],
-            'phone' => $request->shipper['pickupPhone'],
-            'email' => $request->shipper['pickupEmail']
+        $contact = [
+            'name' => $request->contact['name'],
+            'phone' => $request->contact['phone'],
+            'email' => $request->contact['email']
         ];
-        $srcId = Contact::insertGetId($srcContact);
-        array_push($contactIds, $srcId);
-
-        $desContact = [
-            'name' => $request->shipper['deliveryName'],
-            'phone' => $request->shipper['deliveryPhone'],
-            'email' => $request->shipper['deliveryEmail']
-        ];
-        $desId = Contact::insertGetId($desContact);
-        array_push($contactIds, $desId);
-        return $contactIds;
+        $id = Contact::insertGetId($contact);
+        return $id;
     }
     public function storeAddress($request){
-        $addressIds = array();
-        $srcCountry = Country::where('name', $request->src['country'])->first();
-        $srcAddress = [
-            'street' => $request->src['street'],
-            'street_number' => $request->src['street_number'],
-            'zip' => $request->src['zip'],
-            'city' => $request->src['city'],
-            'state' => $request->src['state'],
-            'country_id' => $srcCountry->id
+        $countryId = Country::where('name', $request->address['country'])->first();
+        $addressAddress = [
+            'street' => $request->address['street'],
+            'street_number' => $request->address['street_number'],
+            'zip' => $request->address['zip'],
+            'city' => $request->address['city'],
+            'state' => $request->address['state'],
+            'formatted_address' => $request->address['formatted_address'],
+            'country_id' => $countryId->id
         ];
-        $srcId = Address::insertGetId($srcAddress);
-        array_push($addressIds, $srcId);
-
-        $desCountry = Country::where('name', $request->des['country'])->first();
-        $desAddress = [
-            'street' => $request->des['street'],
-            'street_number' => $request->des['street_number'],
-            'zip' => $request->des['zip'],
-            'city' => $request->des['city'],
-            'state' => $request->des['state'],
-            'country_id' => $desCountry->id
-        ];
-        $desId = Address::insertGetId($desAddress);
-        array_push($addressIds, $desId);
-        return $addressIds;
-    }
-
-    public function storeShipper($data)
-    {
-        if (Auth::check() && auth()->user()->roles[0]->name === "shipper") {
-            $shipper = User::with('shipper')->find(Auth::id())->shipper;
-            if ($shipper) {
-                return $shipper->id;
-            }
-            return false;
-        }
-
-        $shipper = new Shipper();
-        $shipper->first_name = $data['pickupName'];
-        $shipper->save();
-
-        return $shipper->id;
+        $addressId = Address::insertGetId($addressAddress);
+        return $addressId;
+      
     }
 
     public function createNewJob($order, $shipperId, $carrier)
@@ -207,13 +127,7 @@ class ShipmentController extends Controller
         return $job;
     }
 
-    public function calculateDW($item)
-    {
-        $x = (($item['width'] * $item['height'] * $item['length']) / 166) * $item['number'];
-        $y = $item['weight'] * $item['number'];
-        $dw = $x >= $y ? $x : $y;
-        return round($dw);
-    }
+
     /**
      * Display the specified resource.
      *

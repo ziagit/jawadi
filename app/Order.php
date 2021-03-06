@@ -5,32 +5,24 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
-{
-    //
-    public function items()
+{ 
+    public function user()
     {
-        return $this->belongsToMany(Item::class);
-    }
-    public function itemsWithType(){
-        return $this->items()->with('itemtype');
-    }
-    public function accessories()
-    {
-        return $this->belongsToMany(Accessory::class)->withPivot('type')->withTimestamps();
-    }
-    public function shipper()
-    {
-        return $this->belongsTo(Shipper::class);
+        return $this->hasMany(User::class);
     }
     public function addresses(){
-        return $this->belongsToMany(Address::class);
+        return $this->belongsTo(Address::class);
     }
-    public function fullAddress(){
-        return $this->addresses()->with('country');
-    }
+  
     public function contacts(){
-        return $this->belongsToMany(Contact::class);
+        return $this->belongsTo(Contact::class);
     }
+    public function options(){
+        return $this->belongsToMany(Option::class);
+    }
+
+
+    //remove it 
     public function job()
     {
         return $this->hasOne(Job::class);
